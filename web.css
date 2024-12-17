@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smoking Impact Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #e74c3c;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Smoking Impact Calculator</h1>
+        <label for="cigarettes">Cigarettes per Day:</label>
+        <input type="number" id="cigarettes" placeholder="Enter number of cigarettes">
+
+        <label for="years">Years of Smoking:</label>
+        <input type="number" id="years" placeholder="Enter number of years">
+
+        <button onclick="calculateImpact()">Calculate</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateImpact() {
+            const cigarettesPerDay = document.getElementById('cigarettes').value;
+            const years = document.getElementById('years').value;
+
+            if (cigarettesPerDay > 0 && years > 0) {
+                const totalCigarettes = cigarettesPerDay * years * 365;
+                const timeLost = totalCigarettes * 11 / 60; // Approx 11 minutes lost per cigarette
+                document.getElementById('result').innerHTML = `
+                    <p>You have smoked approximately <strong>${totalCigarettes}</strong> cigarettes.</p>
+                    <p>Estimated <strong>${timeLost.toFixed(2)}</strong> hours of life lost due to smoking.</p>
+                `;
+            } else {
+                document.getElementById('result').innerHTML = '<p style="color:red;">Please enter valid numbers!</p>';
+            }
+        }
+    </script>
+</body>
+</html>
+``
